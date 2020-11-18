@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
 const items = [
   {
@@ -34,20 +35,21 @@ const options = [
 ];
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [openNav, setOpenNav] = useState(true);
+  // const [selected, setSelected] = useState(options[0]);
+  // const [openNav, setOpenNav] = useState(true);
   return (
     <div>
-      <button onClick={() => setOpenNav(!openNav)}>Toggle Dropdown</button>
+      {/* <button onClick={() => setOpenNav(!openNav)}>Toggle Dropdown</button> */}
       {/* <Search /> */}
       {/* <Accordion items={items} /> */}
-      {openNav ? (
+      {/* {openNav ? (
         <Dropdown
           selected={selected}
           setSelected={setSelected}
           options={options}
         />
-      ) : null}
+      ) : null} */}
+      <Translate />
     </div>
   );
 };
