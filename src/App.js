@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
+import Dropdown from "./components/Dropdown";
 
 const items = [
   {
@@ -17,12 +18,36 @@ const items = [
   },
 ];
 
+const options = [
+  {
+    label: "The Color Red",
+    value: "red",
+  },
+  {
+    label: "The Color Green",
+    value: "green",
+  },
+  {
+    label: "A Shade of Blue",
+    value: "blue",
+  },
+];
+
 const App = () => {
+  const [selected, setSelected] = useState(options[0]);
+  const [openNav, setOpenNav] = useState(true);
   return (
     <div>
-      <br />
-      <Search />
+      <button onClick={() => setOpenNav(!openNav)}>Toggle Dropdown</button>
+      {/* <Search /> */}
       {/* <Accordion items={items} /> */}
+      {openNav ? (
+        <Dropdown
+          selected={selected}
+          setSelected={setSelected}
+          options={options}
+        />
+      ) : null}
     </div>
   );
 };
