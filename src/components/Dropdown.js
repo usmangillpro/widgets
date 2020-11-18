@@ -47,6 +47,7 @@ const Dropdown = ({ options, selected, setSelected }) => {
           </div>
         </div>
       </div>
+      <h4 className={"ui header " + selected.value}>{selected.label}</h4>
     </div>
   );
 };
