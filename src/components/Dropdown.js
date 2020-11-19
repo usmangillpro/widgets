@@ -2,21 +2,26 @@ import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ label, options, selected, setSelected }) => {
   const [open, setOpen] = useState(false);
+  const [referral, setReferral] = useState(null);
 
   const ref = useRef();
 
   useEffect(() => {
     const onBodyClick = (event) => {
-      if (ref.current.contains(event.target)) {
+      if (referral.contains(event.target)) {
         return;
       }
       setOpen(false);
     };
-    document.body.addEventListener("click", onBodyClick);
+    if (ref.current) {
+      setReferral(ref.current);
+      document.body.addEventListener("click", onBodyClick);
+    }
+
     return () => {
       document.body.removeEventListener("click", onBodyClick);
     };
-  }, []);
+  }, [referral]);
 
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
